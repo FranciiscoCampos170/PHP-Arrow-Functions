@@ -32,4 +32,22 @@ $sayHello = function () use ($name)
 /**[3] - Arrow function */
 $sayHelloTo = fn() => 'Hello '. $name;
 
-var_dump($sayHelloTo());
+//var_dump($sayHelloTo());
+
+
+/**[4] - Normal Way */
+
+$string = 'alexander';
+$split = str_split($string);
+$result = array_map(function($char, $count) {
+    return [
+        'char' => $char,
+        'occurs' => $count
+    ];
+}, array_unique($split), array_count_values($split));
+
+
+/**[4] - Arrow function */
+$new_result = array_map(fn ($char, $occurs) => compact('char', 'occurs'),array_unique($split), array_count_values($split));
+
+echo '<pre>', var_dump($new_result) , '</pre>'; 
