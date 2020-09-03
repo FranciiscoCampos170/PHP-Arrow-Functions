@@ -50,4 +50,19 @@ $result = array_map(function($char, $count) {
 /**[4] - Arrow function */
 $new_result = array_map(fn ($char, $occurs) => compact('char', 'occurs'),array_unique($split), array_count_values($split));
 
-echo '<pre>', var_dump($new_result) , '</pre>'; 
+//echo '<pre>', var_dump($new_result) , '</pre>'; 
+
+/**[5] - Normal Way*/
+//$user = null;
+$user = ['name' => 'Rui'];
+$greet = function() use($user){
+    if(!$user){
+        return 'Hey';
+    }
+    return 'Hey ' . $user['name'];
+};
+
+/**[5] - Arrow function */
+$new_greet = fn() => trim('Hey ' . ($user ? $user['name'] : ''));
+
+var_dump($greet());
