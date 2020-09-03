@@ -65,4 +65,15 @@ $greet = function() use($user){
 /**[5] - Arrow function */
 $new_greet = fn() => trim('Hey ' . ($user ? $user['name'] : ''));
 
-var_dump($greet());
+//var_dump($greet());
+
+
+/**[6] - Normal way*/
+$normal_greet = function (string $greeting): string {
+    return 1;
+};
+
+/**[6] - Arrow way*/
+$greet = fn(string $greeting) => $greeting;
+
+var_dump($normal_greet('Hey'));
